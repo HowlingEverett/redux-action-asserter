@@ -1,5 +1,6 @@
 import isEqual from 'lodash/isEqual'
 import isFunction from 'lodash/isFunction'
+import matches from 'lodash/matches'
 
 export default class ActionAsserter {
   constructor () {
@@ -26,6 +27,10 @@ export default class ActionAsserter {
   }
 
   dispatchedAction (action) {
+    return this.actions.find((dispatchedAction) => matches(action, dispatchedAction)) !== undefined
+  }
+
+  dispatchedExactAction (action) {
     return this.actions.find((dispatchedAction) => isEqual(action, dispatchedAction)) !== undefined
   }
 
