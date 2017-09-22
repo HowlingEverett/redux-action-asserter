@@ -1,9 +1,11 @@
 {
-  "name": "redux-test-action-log",
+  "name": "redux-action-asserter",
   "version": "0.0.1",
-  "main": "dist/index.js",
+  "main": "dist/main.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register test/*-test.js"
+    "test": "mocha --compilers js:babel-core/register test/*-test.js",
+    "build": "babel index.js -o dist/main.js --source-maps",
+    "prepublish": "npm run build"
   },
   "peerDependencies": {
     "redux": ">=3 <4"
