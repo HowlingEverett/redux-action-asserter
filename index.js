@@ -9,10 +9,9 @@ export default class ActionAsserter {
   middleware () {
     return store => next => action => {
       if (isFunction(action)) {
-        this.thunks.push(action)
-      } else {
-        this.actions.push(action)
+        return this.thunks.push(action(store.dispatch, store.getState))
       }
+      this.actions.push(action)
       return next(action)
     }
   }
