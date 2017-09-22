@@ -28,7 +28,7 @@ export default class ActionAsserter {
   dispatchedAction (action) {
     return this.actions.find((dispatchedAction) => {
       for (const key in dispatchedAction) {
-        if (dispatchedAction.hasOwnProperty(key)) {
+        if (dispatchedAction.hasOwnProperty(key) && action.hasOwnProperty(key)) {
           if (!isEqual(dispatchedAction[key], action[key])) {
             return false
           }
